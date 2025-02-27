@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Notifications\EventCreated;
+use Illuminate\Support\Facades\Notification;
 
 class Event extends Model
 {
@@ -23,6 +25,15 @@ class Event extends Model
         'date' => 'datetime',
         'max_participants' => 'integer',
     ];
+
+    protected static function booted()
+    {
+        static::created(function ($event) {
+            $users = User::where('role', 'admin')->get();
+            
+            Notification::send($users, new EventCreated($event));
+        });
+    }
 
     // Relationship with the organizer (User)
     public function organizer()
