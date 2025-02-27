@@ -3,6 +3,7 @@ import { CRUD_ACTION, NavGroup } from '@common/defs/types';
 import DashboardCustomizeRoundedIcon from '@mui/icons-material/DashboardCustomizeRounded';
 import Namespaces from '@common/defs/namespaces';
 import { Group } from '@mui/icons-material';
+import EventIcon from '@mui/icons-material/Event';
 
 export const menuItems: NavGroup[] = [
   {
@@ -20,6 +21,14 @@ export const menuItems: NavGroup[] = [
         namespace: Namespaces.Users,
         permission: CRUD_ACTION.READ,
         routes: Routes.Users,
+      },
+      {
+        text: 'Events',
+        icon: <EventIcon />,
+        link: Routes.Events.ReadAll,
+        namespace: Namespaces.Events,
+        permission: CRUD_ACTION.READ,
+        routes: Routes.Events,
       },
     ],
   },

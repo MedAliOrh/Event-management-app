@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
-    public function index()
+    public function readAll()
     {
         $events = Event::with(['organizer', 'participants'])->get();
         return response()->json($events);
     }
 
-    public function store(Request $request)
+    public function createOne(Request $request)
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -33,12 +33,12 @@ class EventController extends Controller
         return response()->json($event, 201);
     }
 
-    public function show(Event $event)
+    public function readOne(Event $event)
     {
         return response()->json($event->load(['organizer', 'participants']));
     }
 
-    public function update(Request $request, Event $event)
+    public function updateOne(Request $request, Event $event)
     {
         $validated = $request->validate([
             'title' => 'sometimes|string|max:255',
@@ -53,7 +53,7 @@ class EventController extends Controller
         return response()->json($event);
     }
 
-    public function destroy(Event $event)
+    public function deleteOne(Event $event)
     {
         $event->delete();
         return response()->json(null, 204);

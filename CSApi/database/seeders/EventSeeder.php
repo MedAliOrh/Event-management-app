@@ -23,7 +23,8 @@ class EventSeeder extends Seeder
         ]);
 
         foreach ($events as $event) {
-            $participants = $users->random(rand(1, 3))->pluck('id');
+            $numParticipants = min(rand(1, 3), $users->count());
+            $participants = $users->random($numParticipants)->pluck('id');
             $event->participants()->attach($participants);
         }
     }
