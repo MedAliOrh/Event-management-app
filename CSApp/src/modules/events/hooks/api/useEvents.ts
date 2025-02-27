@@ -22,7 +22,7 @@ export interface UpdateOneInput {
 export type UpsertOneInput = CreateOneInput | UpdateOneInput;
 
 const useEvents: UseItems<Event, CreateOneInput, UpdateOneInput> = (
-  opts: UseItemsOptions = defaultOptions
+  opts: UseItemsOptions = defaultOptions,
 ) => {
   const useItemsHook = useItems<Event, CreateOneInput, UpdateOneInput>(ApiRoutes, opts);
   return useItemsHook;

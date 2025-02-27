@@ -47,5 +47,5 @@ export default withAuth(
   {
     mode: AUTH_MODE.LOGGED_IN,
     redirectUrl: Routes.Auth.Login,
-  }
+  },
 );

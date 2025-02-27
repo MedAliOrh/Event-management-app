@@ -52,7 +52,7 @@ export interface RowAction<Item> {
   enabled?: (id: Id, item: Item) => boolean;
 }
 const ItemsTable = <Item, CreateOneInput, UpdateOneInput, Row extends CrudRow>(
-  props: ItemsTableProps<Item, CreateOneInput, UpdateOneInput, Row>
+  props: ItemsTableProps<Item, CreateOneInput, UpdateOneInput, Row>,
 ) => {
   const {
     namespace,
@@ -77,7 +77,7 @@ const ItemsTable = <Item, CreateOneInput, UpdateOneInput, Row extends CrudRow>(
   const [columns, setColumns] = useState<GridColumns>([]);
   const [filterModel, setFilterModel] = useState<GridFilterModel>(propFilterModel || { items: [] });
   const [sortModel, setSortModel] = useState<GridSortModel>(
-    propSortModel || [{ field: 'createdAt', sort: 'desc' }]
+    propSortModel || [{ field: 'createdAt', sort: 'desc' }],
   );
   const [page, setPage] = useState<number>(0);
   const [pageSize, setPageSize] = useState<number>(50);
@@ -261,7 +261,7 @@ interface RowActionCellProps<Item, CreateOneInput, UpdateOneInput> {
 }
 
 const RowActionCell = <Item, CreateOneInput, UpdateOneInput>(
-  props: RowActionCellProps<Item, CreateOneInput, UpdateOneInput>
+  props: RowActionCellProps<Item, CreateOneInput, UpdateOneInput>,
 ) => {
   const { id, item, namespace, routes, deleteOne, actions, refreshRows, showLock = true } = props;
   const { openConfirmDialog } = useDialogContext();
@@ -352,7 +352,7 @@ const RowActionCell = <Item, CreateOneInput, UpdateOneInput>(
                   deleteOne(id, { displayProgress: true, displaySuccess: true });
                 },
                 'Oui, supprimer',
-                'error'
+                'error',
               );
             }}
             sx={{ color: 'error.main' }}

@@ -26,7 +26,7 @@ const CreateUserStep2 = forwardRef((props: CreateUserStep2Props, ref: Ref<FormSt
     role: Yup.mixed<ROLE>()
       .oneOf(Object.values(ROLE), (_values) => {
         return `${t('common:role_criteria')} ${ROLES_OPTIONS.map((option) => t(option.label)).join(
-          ', '
+          ', ',
         )}`;
       })
       .required(t('common:field_required')),

@@ -23,7 +23,7 @@ const CreateUserForm = (_props: CreateUserFormProps) => {
     role: Yup.mixed<ROLE>()
       .oneOf(Object.values(ROLE), (_values) => {
         return `Le champ doit avoir l'une des valeurs suivantes : ${ROLES_OPTIONS.map(
-          (option) => option.label
+          (option) => option.label,
         ).join(', ')}`;
       })
       .required('Le champ est obligatoire'),
@@ -36,7 +36,7 @@ const CreateUserForm = (_props: CreateUserFormProps) => {
   const onPostSubmit = async (
     _data: CreateOneInput,
     response: ItemResponse<User>,
-    _methods: UseFormReturn<CreateOneInput>
+    _methods: UseFormReturn<CreateOneInput>,
   ) => {
     if (response.success) {
       router.push(Routes.Users.ReadAll);

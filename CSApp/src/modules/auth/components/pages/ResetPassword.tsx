@@ -50,7 +50,7 @@ const ResetPassword = (props: ResetPasswordProps) => {
         passwordConfirmation: data.passwordConfirmation,
         token: props.token,
       },
-      { displayProgress: true, displaySuccess: true }
+      { displayProgress: true, displaySuccess: true },
     );
   };
   return (

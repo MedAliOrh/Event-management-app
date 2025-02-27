@@ -36,7 +36,7 @@ const RequestPasswordReset = () => {
       {
         email: data.email,
       },
-      { displayProgress: true, displaySuccess: true }
+      { displayProgress: true, displaySuccess: true },
     );
   };
   return (

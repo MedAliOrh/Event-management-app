@@ -41,17 +41,17 @@ export interface UseItemsHook<Item, CreateOneInput, UpdateOneInput> {
     pageSize?: number | 'all',
     columnsSort?: SortParam,
     filterParam?: FilterParam[],
-    options?: FetchApiOptions
+    options?: FetchApiOptions,
   ) => Promise<ItemsResponse<Item>>;
   updateOne: (
     id: Id,
     _input: UpdateOneInput,
-    options?: FetchApiOptions
+    options?: FetchApiOptions,
   ) => Promise<ItemResponse<Item>>;
   patchOne: (
     id: Id,
     _input: Partial<UpdateOneInput>,
-    options?: FetchApiOptions
+    options?: FetchApiOptions,
   ) => Promise<ItemResponse<Item>>;
   deleteOne: (id: Id, options?: FetchApiOptions) => Promise<ItemResponse<Item>>;
   mutate: () => void;
@@ -67,12 +67,12 @@ export const defaultOptions = {
 };
 
 export type UseItems<Item, CreateOneInput = Any, UpdateOneInput = Any> = (
-  opts?: UseItemsOptions
+  opts?: UseItemsOptions,
 ) => UseItemsHook<Item, CreateOneInput, UpdateOneInput>;
 
 const useItems = <Item, CreateOneInput, UpdateOneInput>(
   apiRoutes: CrudApiRoutes,
-  opts: UseItemsOptions = defaultOptions
+  opts: UseItemsOptions = defaultOptions,
 ): UseItemsHook<Item, CreateOneInput, UpdateOneInput> => {
   const fetchApi = useApi();
   const [shouldRefetch, setShouldRefetch] = useState(opts.fetchItems);
@@ -88,10 +88,10 @@ const useItems = <Item, CreateOneInput, UpdateOneInput>(
         savedReadAllParams?.page,
         savedReadAllParams?.pageSize,
         savedReadAllParams?.columnsSort,
-        savedReadAllParams && savedReadAllParams.filter ? [savedReadAllParams?.filter] : []
+        savedReadAllParams && savedReadAllParams.filter ? [savedReadAllParams?.filter] : [],
       );
       return response.data?.items ?? null;
-    }
+    },
   );
 
   const mutateAndRefetch: KeyedMutator<Item[] | null> = async () => {
@@ -124,7 +124,7 @@ const useItems = <Item, CreateOneInput, UpdateOneInput>(
   const readOne = async (id: Id, options?: FetchApiOptions) => {
     const response = await fetchApi<ItemData<Item>>(
       apiRoutes.ReadOne.replace('{id}', id.toString()),
-      options
+      options,
     );
 
     return response;
@@ -135,7 +135,7 @@ const useItems = <Item, CreateOneInput, UpdateOneInput>(
     pageSize?: number | 'all',
     columnsSort?: SortParam,
     filters?: FilterParam[],
-    options?: FetchApiOptions
+    options?: FetchApiOptions,
   ) => {
     setSavedReadAllParams((value) => ({
       ...value,
@@ -169,7 +169,7 @@ const useItems = <Item, CreateOneInput, UpdateOneInput>(
           ? '&filters[]=' + filterParam
           : ''
       }`,
-      options
+      options,
     );
     if (response.success) {
       setItems(response.data?.items ?? null);
@@ -186,7 +186,7 @@ const useItems = <Item, CreateOneInput, UpdateOneInput>(
         method: 'PUT',
         data: input,
         ...options,
-      }
+      },
     );
 
     if (response.success) {
@@ -203,7 +203,7 @@ const useItems = <Item, CreateOneInput, UpdateOneInput>(
         method: 'PATCH',
         data: input,
         ...options,
-      }
+      },
     );
 
     if (response.success) {
@@ -219,7 +219,7 @@ const useItems = <Item, CreateOneInput, UpdateOneInput>(
       {
         method: 'DELETE',
         ...options,
-      }
+      },
     );
 
     if (response.success) {

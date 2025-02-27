@@ -7,7 +7,7 @@ interface PermissionsAPI {
   canNot: (
     entityName: string,
     action: string | CRUD_ACTION | CRUD_ACTION[],
-    entityId?: Id
+    entityId?: Id,
   ) => boolean;
 }
 
@@ -17,7 +17,7 @@ const usePermissions = (): PermissionsAPI => {
   const can = (
     entityName: string,
     action: string | CRUD_ACTION | CRUD_ACTION[],
-    entityId?: Id
+    entityId?: Id,
   ): boolean => {
     if (!user) {
       return false;
@@ -34,7 +34,7 @@ const usePermissions = (): PermissionsAPI => {
       .map((action) =>
         entityId
           ? [`${entityName}.${entityId}.${action}`, `${entityName}.${action}`]
-          : `${entityName}.${action}`
+          : `${entityName}.${action}`,
       )
       .flat();
 
@@ -50,7 +50,7 @@ const usePermissions = (): PermissionsAPI => {
   const canNot = (
     entityName: string,
     action: string | CRUD_ACTION | CRUD_ACTION[],
-    entityId?: Id
+    entityId?: Id,
   ): boolean => {
     return !can(entityName, action, entityId);
   };

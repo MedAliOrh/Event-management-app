@@ -10,14 +10,14 @@ interface Props<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > extends AutocompleteProps<T, Multiple, DisableClearable, FreeSolo> {
   name: string;
   label?: string;
   helperText?: React.ReactNode;
   onChange?: (
     event: React.SyntheticEvent,
-    value: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+    value: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
   ) => void;
 }
 
@@ -25,7 +25,7 @@ const RHFAutocomplete = <
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >({
   name,
   label,

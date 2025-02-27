@@ -21,7 +21,7 @@ import _ from 'lodash';
 
 export interface CurrentFormStepRef<
   CreateOneInput extends FieldValues = Any,
-  UpdateOneInput extends FieldValues = Any
+  UpdateOneInput extends FieldValues = Any,
 > {
   submit: () => Promise<FormSubmitResponse<AnyObject>>;
   methods: UseFormReturn<CreateOneInput | UpdateOneInput>;
@@ -56,7 +56,7 @@ export interface UpsertCrudItemFormProps<
   Item,
   CreateOneInput extends FieldValues = Any,
   UpdateOneInput extends FieldValues = Any,
-  TAB_ENUM = Any
+  TAB_ENUM = Any,
 > {
   item?: Item;
   routes: CrudAppRoutes;
@@ -71,12 +71,12 @@ export interface UpsertCrudItemFormProps<
   mode?: FORM_MODE;
   onWatch?: (values: CreateOneInput | UpdateOneInput) => void;
   onPreSubmit?: (
-    data: CreateOneInput | UpdateOneInput
+    data: CreateOneInput | UpdateOneInput,
   ) => PresubmitResponse<CreateOneInput, UpdateOneInput>;
   onPostSubmit?: (
     data: CreateOneInput | UpdateOneInput,
     response: ItemResponse<Item>,
-    methods: UseFormReturn<CreateOneInput | UpdateOneInput>
+    methods: UseFormReturn<CreateOneInput | UpdateOneInput>,
   ) => void;
 }
 
@@ -84,14 +84,14 @@ const UpsertCrudItemForm = <
   Item extends CrudObject,
   CreateOneInput extends FieldValues = Any,
   UpdateOneInput extends FieldValues = Any,
-  TAB_ENUM = Any
+  TAB_ENUM = Any,
 >(
   {
     displayCard = true,
     displayFooter = true,
     ...props
   }: UpsertCrudItemFormProps<Item, CreateOneInput, UpdateOneInput, TAB_ENUM>,
-  ref: Ref<CurrentFormStepRef | undefined>
+  ref: Ref<CurrentFormStepRef | undefined>,
 ) => {
   const {
     item,
@@ -210,7 +210,7 @@ const UpsertCrudItemForm = <
         async () => {},
         async (formErrors) => {
           errors = formErrors;
-        }
+        },
       )();
       const data = getValues();
       const hasErrors = Object.keys(methods.formState.errors).length > 0;
@@ -291,11 +291,11 @@ type ForwardRefFn<T> = <
   Item,
   CreateOneInput extends FieldValues = Any,
   UpdateOneInput extends FieldValues = Any,
-  TAB_ENUM = Any
+  TAB_ENUM = Any,
 >(
   props: UpsertCrudItemFormProps<Item, CreateOneInput, UpdateOneInput, TAB_ENUM> & {
     ref?: Ref<T | undefined>;
-  }
+  },
 ) => JSX.Element;
 
 export default forwardRef(UpsertCrudItemForm) as ForwardRefFn<CurrentFormStepRef>;

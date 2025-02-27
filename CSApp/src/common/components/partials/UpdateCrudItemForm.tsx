@@ -12,7 +12,7 @@ interface UpdateCrudItemProps<Item, UpdateOneInput extends FieldValues>
 
 const UpdateCrudItem = <Item extends CrudObject, UpdateOneInput extends AnyObject>(
   props: UpdateCrudItemProps<Item, UpdateOneInput>,
-  ref: Ref<CurrentFormStepRef>
+  ref: Ref<CurrentFormStepRef>,
 ) => {
   return (
     <>
@@ -26,7 +26,7 @@ const UpdateCrudItem = <Item extends CrudObject, UpdateOneInput extends AnyObjec
 type ForwardRefFn<T> = <Item, UpdateOneInput extends FieldValues = Any>(
   props: UpdateCrudItemProps<Item, UpdateOneInput> & {
     ref?: Ref<T | undefined>;
-  }
+  },
 ) => JSX.Element;
 
 export default forwardRef(UpdateCrudItem) as ForwardRefFn<CurrentFormStepRef>;

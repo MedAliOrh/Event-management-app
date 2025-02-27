@@ -30,20 +30,20 @@ interface AuthData {
   user: User | null;
   login: (
     _input: LoginInput,
-    _options?: FetchApiOptions
+    _options?: FetchApiOptions,
   ) => Promise<ApiResponse<{ token: string }>>;
   register: (
     _input: RegisterInput,
-    _options?: FetchApiOptions
+    _options?: FetchApiOptions,
   ) => Promise<ApiResponse<{ token: string }>>;
   logout: (_options?: FetchApiOptions) => Promise<ApiResponse<null>>;
   requestPasswordReset: (
     _input: RequestPasswordResetInput,
-    _options?: FetchApiOptions
+    _options?: FetchApiOptions,
   ) => Promise<ApiResponse<null>>;
   resetPassword: (
     _input: ResetPasswordInput,
-    _options?: FetchApiOptions
+    _options?: FetchApiOptions,
   ) => Promise<ApiResponse<{ token: string }>>;
   initialized: boolean; // This is used to prevent the app from rendering before the useAuth initial fetch is complete
 }
@@ -123,7 +123,7 @@ const useAuth = (): AuthData => {
 
   const requestPasswordReset = async (
     input: RequestPasswordResetInput,
-    options?: FetchApiOptions
+    options?: FetchApiOptions,
   ) => {
     const response = await fetchApi<null>(ApiRoutes.Auth.RequestPasswordReset, {
       data: input,

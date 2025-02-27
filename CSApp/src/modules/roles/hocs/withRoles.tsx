@@ -10,7 +10,7 @@ interface WithRolesProps {
 
 const withRoles = <P extends object>(
   WrappedComponent: ComponentType<P>,
-  { requiredRoles, redirectUrl }: WithRolesProps
+  { requiredRoles, redirectUrl }: WithRolesProps,
 ): ComponentType<P> => {
   const WithRoles: ComponentType<P> = (props: P) => {
     const { hasRole } = useRoles();

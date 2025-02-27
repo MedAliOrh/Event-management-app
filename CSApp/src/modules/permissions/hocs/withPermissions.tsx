@@ -10,7 +10,7 @@ interface WithPermissionsProps {
 
 const withPermissions = <P extends object>(
   WrappedComponent: ComponentType<P>,
-  { requiredPermissions, redirectUrl }: WithPermissionsProps
+  { requiredPermissions, redirectUrl }: WithPermissionsProps,
 ): ComponentType<P> => {
   const WithPermissions: ComponentType<P> = (props: P) => {
     const { can } = usePermissions();

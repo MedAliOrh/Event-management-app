@@ -33,7 +33,7 @@ const EventsTable = () => {
       { field: 'location', headerName: t('event:list.location'), flex: 1 },
       { field: 'status', headerName: t('event:list.status'), flex: 1 },
     ],
-    [t]
+    [t],
   );
 
   const [translatedColumns, setTranslatedColumns] = useState<GridColumns<Row>>(columns);
@@ -50,7 +50,7 @@ const EventsTable = () => {
       location: item.location,
       status: item.status,
     }),
-    []
+    [],
   );
 
   return (

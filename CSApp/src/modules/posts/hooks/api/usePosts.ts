@@ -18,7 +18,7 @@ export interface UpdateOneInput {
 export type UpsertOneInput = CreateOneInput | UpdateOneInput;
 
 const usePosts: UseItems<Post, CreateOneInput, UpdateOneInput> = (
-  opts: UseItemsOptions = defaultOptions
+  opts: UseItemsOptions = defaultOptions,
 ) => {
   const apiRoutes = ApiRoutes.Posts;
   const useItemsHook = useItems<Post, CreateOneInput, UpdateOneInput>(apiRoutes, opts);

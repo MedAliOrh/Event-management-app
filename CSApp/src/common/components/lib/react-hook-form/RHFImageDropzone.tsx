@@ -88,7 +88,7 @@ const RHFImageDropzone = (props: RHFImageDropzoneProps) => {
           const res = await updateOne(
             upload.id,
             { file },
-            { displayProgress: true, displaySuccess: true }
+            { displayProgress: true, displaySuccess: true },
           );
           if (res.data) {
             uploaded = res.data?.item;

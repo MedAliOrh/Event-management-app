@@ -11,7 +11,7 @@ interface CreateCrudItemFormProps<Item, CreateOneInput extends FieldValues>
 
 const CreateCrudItemForm = <Item extends CrudObject, CreateOneInput extends AnyObject>(
   props: CreateCrudItemFormProps<Item, CreateOneInput>,
-  ref: Ref<CurrentFormStepRef>
+  ref: Ref<CurrentFormStepRef>,
 ) => {
   return (
     <>
@@ -25,7 +25,7 @@ const CreateCrudItemForm = <Item extends CrudObject, CreateOneInput extends AnyO
 type ForwardRefFn<T> = <Item, CreateOneInput extends FieldValues = Any>(
   props: CreateCrudItemFormProps<Item, CreateOneInput> & {
     ref?: Ref<T | undefined>;
-  }
+  },
 ) => JSX.Element;
 
 export default forwardRef(CreateCrudItemForm) as ForwardRefFn<CurrentFormStepRef>;

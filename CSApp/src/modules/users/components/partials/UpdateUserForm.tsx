@@ -24,7 +24,7 @@ const UpdateUserForm = (props: UpdateUserFormProps) => {
     role: Yup.mixed<ROLE>()
       .oneOf(Object.values(ROLE), (_values) => {
         return `${t('common:role_criteria')} ${ROLES_OPTIONS.map((option) => t(option.label)).join(
-          ', '
+          ', ',
         )}`;
       })
       .required(t('common:field_required')),

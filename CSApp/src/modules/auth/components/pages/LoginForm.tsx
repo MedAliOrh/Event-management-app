@@ -39,7 +39,7 @@ const LoginForm = () => {
         email: data.email,
         password: data.password,
       },
-      { displayProgress: true, displaySuccess: true }
+      { displayProgress: true, displaySuccess: true },
     );
   };
   return (

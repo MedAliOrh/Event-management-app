@@ -35,7 +35,7 @@ export type DialogContextType = {
     message: React.ReactNode,
     onConfirm: () => void,
     confirmButtonText?: string,
-    confirmButtonColor?: ButtonProps['color']
+    confirmButtonColor?: ButtonProps['color'],
   ) => void;
 };
 
@@ -60,7 +60,7 @@ export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
     message: React.ReactNode,
     onConfirm: () => void,
     confirmButtonText = 'Confirm',
-    confirmButtonColor: ButtonProps['color'] = 'primary'
+    confirmButtonColor: ButtonProps['color'] = 'primary',
   ) => {
     open({
       title,

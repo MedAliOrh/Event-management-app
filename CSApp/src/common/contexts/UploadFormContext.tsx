@@ -66,7 +66,7 @@ const UploadFormContextProvider = ({ children }: Props) => {
       addOrRemoveFilesToUpload,
       filesToUpload,
     }),
-    [uploadsIdsToDelete, filesToUpload]
+    [uploadsIdsToDelete, filesToUpload],
   );
 
   return <UploadFormContext.Provider value={value}>{children}</UploadFormContext.Provider>;

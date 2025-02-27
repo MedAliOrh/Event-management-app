@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 export type StepComponent<T, P = Any> = (
   props: P & {
     ref?: Ref<T | undefined>;
-  }
+  },
 ) => JSX.Element;
 
 export interface FormStepRef {

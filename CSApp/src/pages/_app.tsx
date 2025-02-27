@@ -99,8 +99,8 @@ const AppWrapper = (props: AppProps) => {
               },
             },
           },
-          locale
-        )
+          locale,
+        ),
       );
     }
   }, [rootElement]);

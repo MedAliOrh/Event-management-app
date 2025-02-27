@@ -18,14 +18,14 @@ interface UseUploadsResponse {
   items: Upload[] | null;
   createOne: (
     _input: CreateOneInput,
-    options?: FetchApiOptions
+    options?: FetchApiOptions,
   ) => Promise<ApiResponse<{ item: Upload }>>;
   readOne: (id: Id, options?: FetchApiOptions) => Promise<ApiResponse<{ item: Upload }>>;
   readAll: (options?: FetchApiOptions) => Promise<ApiResponse<{ items: Upload[] }>>;
   updateOne: (
     id: Id,
     _input: UpdateOneInput,
-    options?: FetchApiOptions
+    options?: FetchApiOptions,
   ) => Promise<ApiResponse<{ item: Upload }>>;
   deleteOne: (id: Id, options?: FetchApiOptions) => Promise<ApiResponse<{ item: Upload | null }>>;
   deleteMulti: (ids: Id[], options?: FetchApiOptions) => Promise<ApiResponse<null>>;
@@ -46,7 +46,7 @@ const useUploads = (opts: UseUploadsOptions = defaultOptions): UseUploadsRespons
     async (_url: string) => {
       const response = await readAll();
       return response.data?.items ?? null;
-    }
+    },
   );
 
   const [items, setItems] = useState<Upload[] | null>(null);
@@ -57,7 +57,7 @@ const useUploads = (opts: UseUploadsOptions = defaultOptions): UseUploadsRespons
 
   const createOne = async (
     input: CreateOneInput,
-    options?: FetchApiOptions
+    options?: FetchApiOptions,
   ): Promise<ApiResponse<{ item: Upload }>> => {
     const formData = new FormData();
     formData.append('file', input.file);
@@ -77,7 +77,7 @@ const useUploads = (opts: UseUploadsOptions = defaultOptions): UseUploadsRespons
   const readOne = async (id: Id, options?: FetchApiOptions) => {
     const response = await fetchApi<{ item: Upload }>(
       ApiRoutes.Uploads.ReadOne.replace('{id}', id.toString()),
-      options
+      options,
     );
 
     return response;
@@ -95,7 +95,7 @@ const useUploads = (opts: UseUploadsOptions = defaultOptions): UseUploadsRespons
   const updateOne = async (
     id: Id,
     input: UpdateOneInput,
-    options?: FetchApiOptions
+    options?: FetchApiOptions,
   ): Promise<ApiResponse<{ item: Upload }>> => {
     const formData = new FormData();
     formData.append('file', input.file);
@@ -105,7 +105,7 @@ const useUploads = (opts: UseUploadsOptions = defaultOptions): UseUploadsRespons
         method: 'POST',
         data: formData,
         ...options,
-      }
+      },
     );
 
     if (response.success) {
@@ -121,7 +121,7 @@ const useUploads = (opts: UseUploadsOptions = defaultOptions): UseUploadsRespons
       {
         method: 'DELETE',
         ...options,
-      }
+      },
     );
 
     if (response.success) {

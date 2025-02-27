@@ -27,7 +27,7 @@ const PageHeader = (props: PageHeaderProps) => {
             can(
               action.permission.entity,
               action.permission.action,
-              action.permission.entityId
+              action.permission.entityId,
             )) && (
             <Button startIcon={action.startIcon} variant="contained" onClick={action.onClick}>
               {action.label}

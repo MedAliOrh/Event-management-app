@@ -28,8 +28,8 @@
       "\t);",
       "};",
       "",
-      "export default ${1:Component};"
-    ]
+      "export default ${1:Component};",
+    ],
   },
   "TS Next Component": {
     "prefix": "next-component",
@@ -40,8 +40,8 @@
       "};",
       "",
       "export default ${1:Component};",
-      ""
-    ]
+      "",
+    ],
   },
   "Component": {
     "prefix": "component-next",
@@ -60,11 +60,11 @@
       "\t);",
       "};",
       "",
-      "export default ${1:Component};"
-    ]
+      "export default ${1:Component};",
+    ],
   },
   "Black Quotes with var": {
     "prefix": "black-quotes-with-var",
-    "body": "{`${${1:expression}}`}"
-  }
+    "body": "{`${${1:expression}}`}",
+  },
 }

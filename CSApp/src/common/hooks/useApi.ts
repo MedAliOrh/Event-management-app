@@ -87,7 +87,7 @@ const useApi = () => {
       }
       return response;
     },
-    [enqueueSnackbar, makeFetch, t, i18n.language]
+    [enqueueSnackbar, makeFetch, t, i18n.language],
   );
 
   return fetchApi;
